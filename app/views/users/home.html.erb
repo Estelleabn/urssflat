@@ -1,0 +1,22 @@
+<h1>Bonjour, <%= current_user.full_name %> !</h1>
+
+<h2> Vos informations :</h2>
+<p> 
+	email: <%= current_user.email %>
+	telephone: <%= current_user.telephone %>
+</p>
+
+<h2>Vos appartements:</h2>
+<ul>
+	<% current_user.flats.each do |flat| %>
+		<li>
+			<%= flat.title %>
+			<%= link_to 'Show', flat_path(flat) %>
+			<%= link_to 'Edit', edit_flat_path(flat) %>
+		</li>
+	<% end %>
+</ul>
+
+<%= link_to "Ajouter un appartement", new_flat_path %>
+
+<%= link_to "Voir tous les utilisateurs", new_flat_path %>

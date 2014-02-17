@@ -6,8 +6,26 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Tag.create(name: "Smoker")
-Tag.create(name: "Pets")
+smoker = Tag.create(name: "Smoker")
+pets = Tag.create(name: "Pets")
 Tag.create(name: "Terrasse")
 Tag.create(name: "Wifi")
 Tag.create(name: "Jacuzzi")
+
+user = User.new
+user.email = 'test@gmail.com'
+user.password = 'urssflat'
+user.password_confirmation = 'urssflat'
+user.full_name = "niels mayrargue"
+user.telephone = "0147001798"
+user.save!
+
+flat = user.flats.new
+flat.title = 'super appart'
+flat.adress = 'address'
+flat.day_price = '1'
+flat.description = "lalala"
+#flat.tags est un collection proxy, qui hérite d'un array. Automatiquement, un nouveau record est fait dans la table de jointure
+flat.tags << smoker << pets
+flat.save!
+

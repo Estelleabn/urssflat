@@ -28,11 +28,7 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :flat_options %><br>
-    <% @tags.each do |tag| %>
-      <input type="checkbox" value="">
-      <%= tag.name %>
-    <% end %>
+      <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
   </div>
   <div class="actions">
     <%= f.submit %>
