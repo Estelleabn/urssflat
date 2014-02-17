@@ -59,7 +59,7 @@ class FlatsController < ApplicationController
   def destroy
     @flat.destroy
     respond_to do |format|
-      format.html { redirect_to flats_url }
+      format.html { redirect_to users_home_url }
       format.json { head :no_content }
     end
   end

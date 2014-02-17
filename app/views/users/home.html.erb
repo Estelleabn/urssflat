@@ -13,10 +13,11 @@
 			<%= flat.title %>
 			<%= link_to 'Show', flat_path(flat) %>
 			<%= link_to 'Edit', edit_flat_path(flat) %>
+			<%= link_to 'Delete', flat_path(flat), method: :delete, data: { confirm: 'Are you sure?' } %>%>
 		</li>
 	<% end %>
 </ul>
 
 <%= link_to "Ajouter un appartement", new_flat_path %>
-
-<%= link_to "Voir tous les utilisateurs", new_flat_path %>
+<%= link_to "Voir tous les utilisateurs", users_index_path %>
+<%= link_to "Voir tous les appartements", flats_path %>
