@@ -1,5 +1,7 @@
 class FlatsController < ApplicationController
   before_action :set_flat, only: [:show, :edit, :update, :destroy]
+  before_action :lookup_tags, only: [:new, :edit]
+  before_action :lookup_owner, only: [:new, :edit, :show]
 
   # GET /flats
   # GET /flats.json
@@ -15,6 +17,7 @@ class FlatsController < ApplicationController
   # GET /flats/new
   def new
     @flat = Flat.new
+
   end
 
   # GET /flats/1/edit
@@ -71,4 +74,13 @@ class FlatsController < ApplicationController
     def flat_params
       params.require(:flat).permit(:title, :adress, :day_price, :description, :owner_id)
     end
+
+  def lookup_tags
+    @tags = Tag.all
+  end
+
+  def lookup_owner
+    @user = @flat.owner
+  end
+
 end
