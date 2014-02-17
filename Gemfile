@@ -33,7 +33,11 @@ group :doc do
 end
 
 gem 'devise'
+gem 'simple_form'
 
+group :development do
+  gem "better_errors"
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
