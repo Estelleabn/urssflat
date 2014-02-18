@@ -39,6 +39,8 @@ group :development do
   gem "better_errors"
 end
 
+gem "paperclip", "~> 3.0"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

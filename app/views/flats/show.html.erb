@@ -32,3 +32,17 @@
   <% end %>
 </p>
 
+<p>
+  <strong>Flat photos:</strong>
+  <br><br>
+  <% @flat.pictures.each do |picture| %>
+  <%= image_tag picture.file.url(:medium) %>
+  <% end %>
+</p>
+
+<p> <% if @flat.owner == current_user %>
+  <%= link_to 'Edit', edit_flat_path(@flat) %>
+  <%= link_to 'Delete', flat_path(@flat), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</p>
+

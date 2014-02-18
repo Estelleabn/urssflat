@@ -12,7 +12,7 @@ Urssflat::Application.routes.draw do
   resources :tags
 
   # You can have the root of your site routed with "root"
-  root 'application#home'
+  root 'flats#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

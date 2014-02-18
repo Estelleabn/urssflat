@@ -1,23 +1,36 @@
 <h1>Bonjour, <%= current_user.full_name %> !</h1>
 
 <h2> Vos informations :</h2>
+
 <p> 
-	email: <%= current_user.email %>
-	telephone: <%= current_user.telephone %>
+	<%= image_tag current_user.avatar.url(:medium) %>
+	<br>Email: <%= current_user.email %>
+	<br>Telephone: <%= current_user.telephone %>
+</p>
+
+<p>
+	<%= link_to 'Edit your information', edit_user_registration_path %>
 </p>
 
 <h2>Vos appartements:</h2>
-<ul>
-	<% current_user.flats.each do |flat| %>
-		<li>
-			<%= flat.title %>
-			<%= link_to 'Show', flat_path(flat) %>
-			<%= link_to 'Edit', edit_flat_path(flat) %>
-			<%= link_to 'Delete', flat_path(flat), method: :delete, data: { confirm: 'Are you sure?' } %>%>
-		</li>
-	<% end %>
-</ul>
 
+<p>
+<table class="table table-striped">
+	<tbody>
+	<% current_user.flats.each do |flat| %>
+		<tr>
+			<td><%= flat.title %></td>
+			<td><%= link_to 'Show', flat_path(flat) %></td>
+			<td><%= link_to 'Edit', edit_flat_path(flat) %></tb>
+			<td><%= link_to 'Delete', flat_path(flat), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+	<% end %>
+    </tbody>
+</table>
+</p>
+
+<p>
 <%= link_to "Ajouter un appartement", new_flat_path %>
-<%= link_to "Voir tous les utilisateurs", users_index_path %>
-<%= link_to "Voir tous les appartements", flats_path %>
+<br><%= link_to "Voir tous les utilisateurs", users_index_path %>
+<br><%= link_to "Voir tous les appartements", flats_path %>
+</p>
