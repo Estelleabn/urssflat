@@ -1,0 +1,10 @@
+<h1> Voici la liste de tous les users de notre super site !</h1>
+
+<p>
+	<% User.all.each do |user| %>
+		<div>
+			<%=  user.full_name %>
+			<%= link_to "show", users_show_path(user) %>
+		</div>
+	<% end %>
+</p>

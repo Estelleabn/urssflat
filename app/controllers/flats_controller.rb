@@ -1,7 +1,7 @@
 class FlatsController < ApplicationController
   before_action :set_flat, only: [:show, :edit, :update, :destroy]
   before_action :lookup_tags, only: [:new, :edit]
-  before_action :lookup_owner, only: [:new, :edit, :show]
+  before_action :lookup_owner, only: [:edit, :show]
 
   # GET /flats
   # GET /flats.json
@@ -27,7 +27,7 @@ class FlatsController < ApplicationController
   # POST /flats
   # POST /flats.json
   def create
-    @flat = Flat.new(flat_params)
+    @flat = current_user.flats.create(flat_params)
 
     respond_to do |format|
       if @flat.save
@@ -59,7 +59,7 @@ class FlatsController < ApplicationController
   def destroy
     @flat.destroy
     respond_to do |format|
-      format.html { redirect_to flats_url }
+      format.html { redirect_to users_home_url }
       format.json { head :no_content }
     end
   end
@@ -72,7 +72,7 @@ class FlatsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def flat_params
-      params.require(:flat).permit(:title, :adress, :day_price, :description, :owner_id)
+      params.require(:flat).permit(:title, :adress, :day_price, :description, tag_ids: [])
     end
 
   def lookup_tags

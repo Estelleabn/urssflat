@@ -22,8 +22,13 @@
 
 <p>
   <strong>Owner:</strong>
-  <%= @flat.owner_id %>
+  <%= @flat.owner.full_name %>
 </p>
 
-<%= link_to 'Edit', edit_flat_path(@flat) %> |
-<%= link_to 'Back', flats_path %>
+<p>
+  <strong>Flat commidities:</strong>
+  <% @flat.tags.each do |tag| %>
+  <%= tag.name + " " %>
+  <% end %>
+</p>
+

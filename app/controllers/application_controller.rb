@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!
 
+  def home
+  		redirect_to users_home_url
+  end
+
  protected
 
   def configure_permitted_parameters
