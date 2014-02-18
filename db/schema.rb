@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140218110820) do
+ActiveRecord::Schema.define(version: 20140218165126) do
+
+  create_table "bookings", force: true do |t|
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer  "flat_id"
+    t.integer  "booker_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bookings", ["booker_id"], name: "index_bookings_on_booker_id"
+  add_index "bookings", ["flat_id"], name: "index_bookings_on_flat_id"
 
   create_table "flats", force: true do |t|
     t.string   "title"

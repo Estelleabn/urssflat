@@ -1,5 +1,7 @@
 Urssflat::Application.routes.draw do
 
+  resources :bookings
+
   get "users/home"
   get "users/show"
   get "users/index"
@@ -8,7 +10,9 @@ Urssflat::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  resources :flats
+  resources :flats do 
+    resources :bookings
+  end
   resources :tags
 
   # You can have the root of your site routed with "root"

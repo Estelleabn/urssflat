@@ -40,6 +40,12 @@
   <% end %>
 </p>
 
+<p>
+  <% unless @flat.owner == current_user %>
+    <%= link_to "Book this appartment", new_booking_path, class: "btn btn-default" %>
+  <% end %>
+</p>
+
 <p> <% if @flat.owner == current_user %>
   <%= link_to 'Edit', edit_flat_path(@flat) %>
   <%= link_to 'Delete', flat_path(@flat), method: :delete, data: { confirm: 'Are you sure?' } %>

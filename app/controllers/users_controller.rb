@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def show
-  	@user = User.find(params.require(:id).permit(:full_name))
+  	@user = User.find(params[:id])
   end
 
   def index

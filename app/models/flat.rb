@@ -4,4 +4,7 @@ class Flat < ActiveRecord::Base
 	
 	has_many :pictures
 	accepts_nested_attributes_for :pictures
+
+	has_many :bookings
+	has_many :bookers, through: :bookings
 end
