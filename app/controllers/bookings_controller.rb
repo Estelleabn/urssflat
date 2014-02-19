@@ -11,6 +11,7 @@ class BookingsController < ApplicationController
   # GET /bookings/1.json
   def show
     @flat = Flat.find(params[:flat_id])
+    @total_price = @booking.total_price
   end
 
   # GET /bookings/new
@@ -30,7 +31,7 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.save
-        format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
+        format.html { redirect_to flat_booking_path(@booking.flat.id, @booking.id), notice: 'Booking was successfully created.' }
         format.json { render action: 'show', status: :created, location: @booking }
       else
         format.html { render action: 'new' }
@@ -58,7 +59,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking.destroy
     respond_to do |format|
-      format.html { redirect_to bookings_url }
+      format.html { redirect_to users_home_path }
       format.json { head :no_content }
     end
   end
