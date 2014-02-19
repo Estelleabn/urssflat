@@ -2,11 +2,13 @@ Urssflat::Application.routes.draw do
 
   resources :bookings
 
-  get "users/home"
-  get "users/show"
-  get "users/index"
-
   devise_for :users
+  
+  get "users/home"
+  get "users/index"
+  get '/users/:id', to: 'users#show', as: :user
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

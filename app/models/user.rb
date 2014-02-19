@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :flats, foreign_key: "owner_id"
   has_many :bookings, foreign_key: "booker_id"
-  has_many :booked_flats, through: :bookings, source: :flats
+  has_many :booked_flats, through: :bookings, source: :flat
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/

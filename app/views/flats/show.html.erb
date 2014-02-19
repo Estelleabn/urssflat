@@ -42,7 +42,7 @@
 
 <p>
   <% unless @flat.owner == current_user %>
-    <%= link_to "Book this appartment", new_booking_path, class: "btn btn-default" %>
+    <%= link_to "Book this appartment", new_flat_booking_path(@flat), class: "btn btn-default" %>
   <% end %>
 </p>
 

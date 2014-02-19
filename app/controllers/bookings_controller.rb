@@ -15,6 +15,7 @@ class BookingsController < ApplicationController
   # GET /bookings/new
   def new
     @booking = Booking.new
+    @flat = Flat.find(params[:flat_id])
   end
 
   # GET /bookings/1/edit
@@ -24,7 +25,7 @@ class BookingsController < ApplicationController
   # POST /bookings
   # POST /bookings.json
   def create
-    @booking = Booking.new(booking_params)
+    @booking = current_user.bookings.build(booking_params)
 
     respond_to do |format|
       if @booking.save

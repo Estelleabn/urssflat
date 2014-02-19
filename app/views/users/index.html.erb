@@ -4,7 +4,7 @@
 	<% User.all.each do |user| %>
 		<div>
 			<%=  user.full_name %>
-			<%= link_to "show", users_show_path(user) %>
+			<%= link_to "show", user_path(user) %>
 		</div>
 	<% end %>
 </p>
