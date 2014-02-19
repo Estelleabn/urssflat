@@ -5,11 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-  before_action :authenticate_user!
-
-  def home
-  		redirect_to users_home_url
-  end
+  before_action :authenticate_user!, except: [:home]
 
  protected
 

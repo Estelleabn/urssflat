@@ -34,7 +34,11 @@ class BookingsController < ApplicationController
         format.html { redirect_to flat_booking_path(@booking.flat.id, @booking.id), notice: 'Booking was successfully created.' }
         format.json { render action: 'show', status: :created, location: @booking }
       else
-        format.html { render action: 'new' }
+        format.html do 
+          flash[:error] = "Invalid booking : dates fordbidden"
+          
+          redirect_to new_flat_booking_path(@booking.flat.id)
+        end
         format.json { render json: @booking.errors, status: :unprocessable_entity }
       end
     end
