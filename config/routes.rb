@@ -1,9 +1,7 @@
 Urssflat::Application.routes.draw do
 
-  resources :bookings
-
   devise_for :users
-  
+
   get "users/home"
   get "users/index"
   get '/users/:id', to: 'users#show', as: :user
@@ -18,7 +16,7 @@ Urssflat::Application.routes.draw do
   resources :tags
 
   # You can have the root of your site routed with "root"
-  root 'flats#index'
+  root 'pages#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

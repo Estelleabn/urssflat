@@ -22,7 +22,7 @@ class FlatsController < ApplicationController
 
   # GET /flats/1/edit
   def edit
-    @picture = @flat.pictures.first
+    @picture = @flat.pictures.last
   end
 
   # POST /flats

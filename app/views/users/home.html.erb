@@ -1,6 +1,6 @@
-<h1>Bonjour, <%= current_user.full_name %> !</h1>
+<h1>Hello, <%= current_user.full_name %> !</h1>
 
-<h2> Vos informations :</h2>
+<h2>My information :</h2>
 
 <p> 
 	<%= image_tag current_user.avatar.url(:medium) %>
@@ -12,7 +12,7 @@
 	<%= link_to 'Edit your information', edit_user_registration_path %>
 </p>
 
-<h2>Vos appartements:</h2>
+<h2>My Gulags:</h2>
 
 <p>
 <table class="table table-striped">
@@ -29,8 +29,19 @@
 </table>
 </p>
 
+<h2>My bookings:</h2>
 <p>
-<%= link_to "Ajouter un appartement", new_flat_path %>
-<br><%= link_to "Voir tous les utilisateurs", users_index_path %>
-<br><%= link_to "Voir tous les appartements", flats_path %>
+<table class="table table-striped">
+	<tbody>
+	<% current_user.bookings.each do |booking| %>
+		<tr>
+			<td><%= booking.start_date %></td>
+			<td><%= booking.end_date %></td>
+			<td><%= booking.flat.title %></td>
+			<td><%= link_to 'Show', flat_booking_path(booking.flat_id, booking.id) %></td>
+			<td><%= link_to 'Delete', flat_booking_path(booking.flat_id, booking.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		</tr>
+	<% end %>
+    </tbody>
+</table>
 </p>
